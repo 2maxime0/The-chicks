@@ -1,41 +1,59 @@
-public class Chick {
+import java.util.concurrent.atomic.AtomicInteger;
 
-    private String name;
+public class Chick extends Character {
+
+    private static final AtomicInteger count = new AtomicInteger(0);
+    private int id; //Chick number
     private String profession;
     private Integer age;
 
+    //TODO : Create a dictionnary of characters references and their affection level
+
     //Chick constructor
     public Chick(String name, String profession, Integer age) {
-        if(name == null) { this.name = "Chick"; } else { this.name = name; }
+        super(name);
+        this.id = count.incrementAndGet();
+        this.age = age;
         this.profession = profession;
-        if(age == null || age < 0) { this.age = 0; } else { this.age = age; }
+        checkFields();
     }
 
-    //whoAmI function overriding toString
+     private void checkFields() {
+        if(getName() == null) { setName("Chick"); }
+        if(getAge() == null || getAge() < 0) { setAge(0); }
+    }
+
+    //Speaking functions
+    @Override
+    public void present() {
+        String sentence = "Hello ! I'm " + getLongName() + " and I'm " + getAge() + " years old ";
+        if(getAge() < 2) { sentence += ":d."; } else { sentence += ":)."; }
+        Chat.speak(getName(), sentence);
+    }
+
+    //Chick informations
     @Override
     public String toString() {
-        String sentence = "I am " + getName() + " and I'm " + getAge() + " years old";
-        if(getAge() <= 1) { sentence += " :p."; } else { sentence += " :)."; }
+        String sentence = "Id : " + getId() + "\nName : " + getLongName() + "\nAge : "
+                + getAge() + "\nProfession : " + getProfession();
         return sentence;
     }
 
     //Get name with profession
-    public String getName() {
-        String fullName = name;
+    public String getLongName() {
+        String fullName = getName();
         if(getProfession() != null) { fullName = getProfession() + " " + fullName; }
         if(getAge() < 1) { fullName = "Baby" + " " + fullName; }
-
         return fullName;
     }
 
-    //getProfession
-    public String getProfession() {
-        return profession;
-    }
+    //Setters
+    public void setProfession(String profession) { this.profession = profession; }
+    public void setAge(Integer age) { this.age = age; }
 
-    //getAge
-    public Integer getAge() {
-        return age;
-    }
+    //Getters
+    public int getId() { return id; }
+    public String getProfession() { return profession; }
+    public Integer getAge() { return age; }
 
 }
