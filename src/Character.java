@@ -1,6 +1,10 @@
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Character {
 
-    private String name;
+    protected static final AtomicInteger count = new AtomicInteger(0);
+    protected int id; //Character id
+    protected String name;
 
     //Constructor
     public Character(String name) {
@@ -13,9 +17,11 @@ public class Character {
     }
 
     //Setters
+    public void setId(int id) { this.id = id; }
     public void setName(String name) { this.name = name; }
 
     //Getters
+    public int getId() { return id; }
     public String getName() { return name; }
 
 }

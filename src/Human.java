@@ -3,16 +3,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Human extends Character {
 
-    private static final AtomicInteger count = new AtomicInteger(0);
     public static ArrayList<Human> humans = new ArrayList<Human>();
 
-    private int id; //Human number
     private int relationship = -1; //Relationship with another human
 
     //Constructor
     public Human(String name) {
         super(name);
-        this.id = count.incrementAndGet();
+        setId(count.incrementAndGet());
     }
 
     //Speaking functions
@@ -34,7 +32,6 @@ public class Human extends Character {
     public void setRelationship(int relationship) { this.relationship = relationship; }
 
     //Getters
-    public int getId() { return id; }
     public int getRelationship() { return relationship; }
 
 }

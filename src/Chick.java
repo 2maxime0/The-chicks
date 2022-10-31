@@ -3,10 +3,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Chick extends Character {
 
-    private static final AtomicInteger count = new AtomicInteger(0);
     public static ArrayList<Chick> chicks = new ArrayList<Chick>();
 
-    private int id; //Chick number
     private String profession;
     private Integer age;
 
@@ -15,9 +13,9 @@ public class Chick extends Character {
     //Chick constructor
     public Chick(String name, String profession, Integer age) {
         super(name);
-        this.id = count.incrementAndGet();
-        this.age = age;
-        this.profession = profession;
+        setId(count.incrementAndGet());
+        setAge(age);
+        setProfession(profession);
         checkFields();
     }
 
@@ -55,7 +53,6 @@ public class Chick extends Character {
     public void setAge(Integer age) { this.age = age; }
 
     //Getters
-    public int getId() { return id; }
     public String getProfession() { return profession; }
     public Integer getAge() { return age; }
 
