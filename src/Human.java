@@ -1,8 +1,11 @@
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Human extends Character {
 
     private static final AtomicInteger count = new AtomicInteger(0);
+    public static ArrayList<Human> humans = new ArrayList<Human>();
+
     private int id; //Human number
     private int relationship = -1; //Relationship with another human
 

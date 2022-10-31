@@ -1,8 +1,11 @@
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Chick extends Character {
 
     private static final AtomicInteger count = new AtomicInteger(0);
+    public static ArrayList<Chick> chicks = new ArrayList<Chick>();
+
     private int id; //Chick number
     private String profession;
     private Integer age;

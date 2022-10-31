@@ -5,24 +5,23 @@ public class main {
 
         //TODO : Add a json file manager to save and load
 
-        //TODO : Add static lists of objects in said Classes
+        Chick.chicks.add(new Chick(null, null, 0));
+        Chick.chicks.add(new Chick(null, null, 2));
+        Chick.chicks.add(new Chick("Michel", null, 4));
+        Chick.chicks.add(new Chick(null, "Lawyer", 3));
 
-        Chick[] chicks = new Chick[4];
-        chicks[0] = new Chick(null, null, 0);
-        chicks[1] = new Chick(null, null, 2);
-        chicks[2] = new Chick("Michel", null, 4);
-        chicks[3] = new Chick(null, "Lawyer", 3);
-
-        for(Chick chick : chicks) {
+        for(Chick chick : Chick.chicks) {
             chick.present();
         }
 
         Human[] humans = new Human[2];
-        humans[0] = new Human("Maxime");
-        humans[1] = new Human("Iris");
-        humans[0].setRelationship(humans[1].getId());
+        Human.humans.add(new Human("Maxime"));
+        Human.humans.add(new Human("Iris"));
+        Human.humans.get(0).setRelationship(Human.humans.get(1).getId());
 
-        humans[0].present();
+        for(Human human : Human.humans) {
+            System.out.println(human.toString());
+        }
     }
 
 
