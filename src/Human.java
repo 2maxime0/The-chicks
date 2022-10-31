@@ -3,7 +3,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Human extends Character {
 
-    public static ArrayList<Human> humans = new ArrayList<Human>();
+    private static final AtomicInteger count = new AtomicInteger(0);
+    public static ArrayList<Human> humans = new ArrayList<>();
 
     private int relationship = -1; //Relationship with another human
 
@@ -16,9 +17,11 @@ public class Human extends Character {
     //Speaking functions
     @Override
     public void present() {
-        String sentence = "Hello ! I'm " + getName() + " ";
+        String sentence = "Hello ! I'm " + getName();
         if(getRelationship() != -1) {
-            //TODO: Add a way to find another human with id
+            sentence += " and I'm in relationship with " + humans.get(getRelationship()-1).getName() + " !";
+        } else {
+            sentence += " !";
         }
         Chat.speak(getName(), sentence);
     }

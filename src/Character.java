@@ -2,7 +2,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Character {
 
-    protected static final AtomicInteger count = new AtomicInteger(0);
     protected int id; //Character id
     protected String name;
 

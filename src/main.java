@@ -14,14 +14,15 @@ public class main {
             chick.present();
         }
 
-        Human[] humans = new Human[2];
         Human.humans.add(new Human("Maxime"));
         Human.humans.add(new Human("Iris"));
         Human.humans.get(0).setRelationship(Human.humans.get(1).getId());
+        Human.humans.get(1).present();
+        Human.humans.get(0).present();
 
-        for(Human human : Human.humans) {
-            System.out.println(human.toString());
-        }
+        Chick.chicks.get(3).askPlayBall();
+
+        Chick.chicks.get(0).expressFeelingsForHuman(2);
     }
 
 
